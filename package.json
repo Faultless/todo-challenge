@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -57,6 +57,7 @@
     "purifycss-webpack": "^0.6.1",
     "sass-loader": "^6.0.3",
     "sinon": "^2.2.0",
+    "sinon-mongoose": "^2.0.1",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
     "vue": "^2.3.2",
