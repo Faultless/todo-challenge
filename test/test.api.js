@@ -24,6 +24,17 @@ describe("Get all todos", function() {
 
 describe("Save a todo", function() {
     it("should save a todo", function(done) {
-        
+        var TodoMock = sinon.mock(
+            new Todo({ title: 'test Todo', description: 'empty', completed: false, user: 'tester' })
+        );
+        var todo = TodoMock.object;
+        var expectedResult = { status: true };
+        TodoMock.expects('save').yields(null, expectedResult);
+        todo.save(function (err, result) {
+            TodoMock.verify();
+            TodoMock.restore();
+            expect(result.status).to.be.true;
+            done();
+        });
     });
 });

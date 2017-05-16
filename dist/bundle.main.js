@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,7 +73,7 @@
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
 
-var bind = __webpack_require__(9);
+var bind = __webpack_require__(7);
 
 /*global toString:true*/
 
@@ -384,26 +384,17 @@ module.exports = {
   trim: trim
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(33).Buffer))
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(11)(function(){
-  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-});
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(34);
+var normalizeHeaderName = __webpack_require__(28);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -419,10 +410,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(5);
+    adapter = __webpack_require__(3);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(5);
+    adapter = __webpack_require__(3);
   }
   return adapter;
 }
@@ -493,18 +484,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = function(it){
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-
-/***/ }),
-/* 4 */
+/* 2 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -694,19 +677,19 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(26);
-var buildURL = __webpack_require__(29);
-var parseHeaders = __webpack_require__(35);
-var isURLSameOrigin = __webpack_require__(33);
-var createError = __webpack_require__(8);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
+var settle = __webpack_require__(20);
+var buildURL = __webpack_require__(23);
+var parseHeaders = __webpack_require__(29);
+var isURLSameOrigin = __webpack_require__(27);
+var createError = __webpack_require__(6);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(22);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -802,7 +785,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(31);
+      var cookies = __webpack_require__(25);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -878,10 +861,10 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -907,7 +890,7 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -919,13 +902,13 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(25);
+var enhanceError = __webpack_require__(19);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -943,7 +926,7 @@ module.exports = function createError(message, config, code, response) {
 
 
 /***/ }),
-/* 9 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -961,56 +944,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-var core = module.exports = {version: '2.4.0'};
-if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = function(exec){
-  try {
-    return !!exec();
-  } catch(e){
-    return true;
-  }
-};
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject       = __webpack_require__(47)
-  , IE8_DOM_DEFINE = __webpack_require__(52)
-  , toPrimitive    = __webpack_require__(54)
-  , dP             = Object.defineProperty;
-
-exports.f = __webpack_require__(1) ? Object.defineProperty : function defineProperty(O, P, Attributes){
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if(IE8_DOM_DEFINE)try {
-    return dP(O, P, Attributes);
-  } catch(e){ /* empty */ }
-  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-  if('value' in Attributes)O[P] = Attributes.value;
-  return O;
-};
-
-/***/ }),
-/* 14 */
+/* 8 */
 /***/ (function(module, exports) {
 
 var g;
@@ -1037,31 +971,31 @@ module.exports = g;
 
 
 /***/ }),
-/* 15 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 16 */
+/* 10 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 17 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(66)
+  __webpack_require__(44)
 }
-var Component = __webpack_require__(64)(
+var Component = __webpack_require__(42)(
   /* script */
-  __webpack_require__(37),
+  __webpack_require__(31),
   /* template */
-  __webpack_require__(65),
+  __webpack_require__(43),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -1093,7 +1027,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 18 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -10721,25 +10655,25 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 19 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(20);
+module.exports = __webpack_require__(14);
 
 /***/ }),
-/* 20 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(9);
-var Axios = __webpack_require__(22);
-var defaults = __webpack_require__(2);
+var bind = __webpack_require__(7);
+var Axios = __webpack_require__(16);
+var defaults = __webpack_require__(1);
 
 /**
  * Create an instance of Axios
@@ -10772,15 +10706,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(6);
-axios.CancelToken = __webpack_require__(21);
-axios.isCancel = __webpack_require__(7);
+axios.Cancel = __webpack_require__(4);
+axios.CancelToken = __webpack_require__(15);
+axios.isCancel = __webpack_require__(5);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(36);
+axios.spread = __webpack_require__(30);
 
 module.exports = axios;
 
@@ -10789,13 +10723,13 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 21 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(6);
+var Cancel = __webpack_require__(4);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -10853,18 +10787,18 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 22 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(2);
+var defaults = __webpack_require__(1);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(23);
-var dispatchRequest = __webpack_require__(24);
-var isAbsoluteURL = __webpack_require__(32);
-var combineURLs = __webpack_require__(30);
+var InterceptorManager = __webpack_require__(17);
+var dispatchRequest = __webpack_require__(18);
+var isAbsoluteURL = __webpack_require__(26);
+var combineURLs = __webpack_require__(24);
 
 /**
  * Create a new instance of Axios
@@ -10945,7 +10879,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 23 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11004,16 +10938,16 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 24 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(27);
-var isCancel = __webpack_require__(7);
-var defaults = __webpack_require__(2);
+var transformData = __webpack_require__(21);
+var isCancel = __webpack_require__(5);
+var defaults = __webpack_require__(1);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -11090,7 +11024,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 25 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11116,13 +11050,13 @@ module.exports = function enhanceError(error, config, code, response) {
 
 
 /***/ }),
-/* 26 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(6);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -11148,7 +11082,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 27 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11175,7 +11109,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 28 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11218,7 +11152,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 29 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11293,7 +11227,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 30 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11314,7 +11248,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 31 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11374,7 +11308,7 @@ module.exports = (
 
 
 /***/ }),
-/* 32 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11395,7 +11329,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 33 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11470,7 +11404,7 @@ module.exports = (
 
 
 /***/ }),
-/* 34 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11489,7 +11423,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 35 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11533,7 +11467,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 36 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11567,7 +11501,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 37 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11577,7 +11511,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _restServices = __webpack_require__(39);
+var _restServices = __webpack_require__(48);
 
 var _restServices2 = _interopRequireDefault(_restServices);
 
@@ -11726,222 +11660,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _vue = __webpack_require__(18);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-var _app = __webpack_require__(17);
-
-var _app2 = _interopRequireDefault(_app);
-
-__webpack_require__(15);
-
-__webpack_require__(16);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-new _vue2.default({
-    el: '.todo',
-    components: { App: _app2.default }
-});
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _classCallCheck2 = __webpack_require__(41);
-
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-var _createClass2 = __webpack_require__(42);
-
-var _createClass3 = _interopRequireDefault(_createClass2);
-
-var _axios = __webpack_require__(19);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _path = __webpack_require__(60);
-
-var _path2 = _interopRequireDefault(_path);
-
-var _querystring = __webpack_require__(63);
-
-var _querystring2 = _interopRequireDefault(_querystring);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Setting the default Parameters for Axios
- */
-_axios2.default.defaults.baseURL = 'http://localhost:3000'; /**
-                                                             * @fileOverview Various Todo services for the Todo API.
-                                                             * @author Serge R. Kamel
-                                                             * @version 0.0.1
-                                                             */
-
-_axios2.default.defaults.timeout = 10000;
-_axios2.default.defaults.headers.post['Content-Type'], _axios2.default.defaults.headers.put['Content-Type'] = "application/x-www-form-urlencoded";
-
-/**
- * A class that exports handy methods to interact with the Todo API.
- * @class RestServices
- */
-var RestServices = function () {
-    function RestServices() {
-        (0, _classCallCheck3.default)(this, RestServices);
-    }
-
-    (0, _createClass3.default)(RestServices, [{
-        key: 'requestTodo',
-
-        /**
-         * Fetch all Todos or a specific Todo by passing a Todo ID.
-         * @param {string} [todoid] - a unique identifier for todos.
-         */
-        value: function requestTodo(user, todoid) {
-            if (!todoid && user) {
-                return _axios2.default.get(_path2.default.join('api/todo', user.toString())) // fetch all Todos.
-                .catch(function (error) {
-                    console.log(error);
-                });
-            } else if (todoid && user) {
-                return _axios2.default.get(_path2.default.join('api/todo', user.toString(), '/', todoid.toString())) // get a specific todo.
-                .catch(function (error) {
-                    console.log(error);
-                });
-            }
-            return;
-        }
-        /**
-         * Saves a todo item in the database as a document.
-         * @param {object} todo - a JSON valid todo object based on the todo model defined in the API
-         */
-
-    }, {
-        key: 'saveTodo',
-        value: function saveTodo(user, todo) {
-            if (!todo || !user) {
-                return;
-            }
-            var data = _querystring2.default.stringify(todo);
-            return _axios2.default.post(_path2.default.join('api/todo', user.toString()), data).catch(function (error) {
-                console.log(error);
-            });
-        }
-        /**
-         * Updates a todo item in the database as a document.
-         * @param {object} todo - a JSON valid todo object based on the todo model defined in the API
-         */
-
-    }, {
-        key: 'updateTodo',
-        value: function updateTodo(user, todo) {
-            if (!todo) {
-                return;
-            }
-            var data = _querystring2.default.stringify(todo);
-            return _axios2.default.put(_path2.default.join('api/todo', user.toString(), '/', todo._id.toString()), data).catch(function (error) {
-                console.log(error);
-            });
-        }
-        /**
-         * Deletes a todo item from the database document based on the provided ID.
-         * @param {string} todoid - the identifier of the todo item to be deleted from the document.
-         */
-
-    }, {
-        key: 'deleteTodo',
-        value: function deleteTodo(user, todoid) {
-            if (!todoid) {
-                return;
-            }
-            return _axios2.default.delete(_path2.default.join('api/todo', user.toString(), '/', todoid.toString())).catch(function (error) {
-                console.log(error);
-            });
-        }
-    }, {
-        key: 'getCurrentUser',
-        value: function getCurrentUser() {
-            return _axios2.default.get('user').catch(function (error) {
-                console.log(error);
-            });
-        }
-    }]);
-    return RestServices;
-}();
-
-exports.default = RestServices;
-
-/***/ }),
-/* 40 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(45), __esModule: true };
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-exports.default = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _defineProperty = __webpack_require__(40);
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      (0, _defineProperty2.default)(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-/***/ }),
-/* 43 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12062,7 +11781,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 44 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12076,9 +11795,9 @@ function fromByteArray (uint8) {
 
 
 
-var base64 = __webpack_require__(43)
-var ieee754 = __webpack_require__(58)
-var isArray = __webpack_require__(59)
+var base64 = __webpack_require__(32)
+var ieee754 = __webpack_require__(36)
+var isArray = __webpack_require__(37)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -13856,204 +13575,13 @@ function isnan (val) {
   return val !== val // eslint-disable-line no-self-compare
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 45 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(55);
-var $Object = __webpack_require__(10).Object;
-module.exports = function defineProperty(it, key, desc){
-  return $Object.defineProperty(it, key, desc);
-};
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-module.exports = function(it){
-  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-  return it;
-};
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(3);
-module.exports = function(it){
-  if(!isObject(it))throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// optional / simple context binding
-var aFunction = __webpack_require__(46);
-module.exports = function(fn, that, length){
-  aFunction(fn);
-  if(that === undefined)return fn;
-  switch(length){
-    case 1: return function(a){
-      return fn.call(that, a);
-    };
-    case 2: return function(a, b){
-      return fn.call(that, a, b);
-    };
-    case 3: return function(a, b, c){
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function(/* ...args */){
-    return fn.apply(that, arguments);
-  };
-};
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(3)
-  , document = __webpack_require__(12).document
-  // in old IE typeof document.createElement is 'object'
-  , is = isObject(document) && isObject(document.createElement);
-module.exports = function(it){
-  return is ? document.createElement(it) : {};
-};
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var global    = __webpack_require__(12)
-  , core      = __webpack_require__(10)
-  , ctx       = __webpack_require__(48)
-  , hide      = __webpack_require__(51)
-  , PROTOTYPE = 'prototype';
-
-var $export = function(type, name, source){
-  var IS_FORCED = type & $export.F
-    , IS_GLOBAL = type & $export.G
-    , IS_STATIC = type & $export.S
-    , IS_PROTO  = type & $export.P
-    , IS_BIND   = type & $export.B
-    , IS_WRAP   = type & $export.W
-    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-    , expProto  = exports[PROTOTYPE]
-    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
-    , key, own, out;
-  if(IS_GLOBAL)source = name;
-  for(key in source){
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if(own && key in exports)continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function(C){
-      var F = function(a, b, c){
-        if(this instanceof C){
-          switch(arguments.length){
-            case 0: return new C;
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if(IS_PROTO){
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if(type & $export.R && expProto && !expProto[key])hide(expProto, key, out);
-    }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library` 
-module.exports = $export;
-
-/***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP         = __webpack_require__(13)
-  , createDesc = __webpack_require__(53);
-module.exports = __webpack_require__(1) ? function(object, key, value){
-  return dP.f(object, key, createDesc(1, value));
-} : function(object, key, value){
-  object[key] = value;
-  return object;
-};
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(1) && !__webpack_require__(11)(function(){
-  return Object.defineProperty(__webpack_require__(49)('div'), 'a', {get: function(){ return 7; }}).a != 7;
-});
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-module.exports = function(bitmap, value){
-  return {
-    enumerable  : !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable    : !(bitmap & 4),
-    value       : value
-  };
-};
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(3);
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function(it, S){
-  if(!isObject(it))return it;
-  var fn, val;
-  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__(50);
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(1), 'Object', {defineProperty: __webpack_require__(13).f});
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(57)(undefined);
+exports = module.exports = __webpack_require__(35)(undefined);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto);", ""]);
 
@@ -14064,7 +13592,7 @@ exports.push([module.i, "\n/*! normalize.css v6.0.0 | MIT License | github.com/n
 
 
 /***/ }),
-/* 57 */
+/* 35 */
 /***/ (function(module, exports) {
 
 /*
@@ -14146,7 +13674,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 58 */
+/* 36 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -14236,7 +13764,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 59 */
+/* 37 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -14247,7 +13775,7 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 60 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
@@ -14475,10 +14003,10 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 61 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14569,7 +14097,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 62 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14661,18 +14189,18 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 63 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(61);
-exports.encode = exports.stringify = __webpack_require__(62);
+exports.decode = exports.parse = __webpack_require__(39);
+exports.encode = exports.stringify = __webpack_require__(40);
 
 
 /***/ }),
-/* 64 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -14769,7 +14297,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 65 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -14925,17 +14453,17 @@ if (false) {
 }
 
 /***/ }),
-/* 66 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(56);
+var content = __webpack_require__(34);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(67)("3860e7c0", content, false);
+var update = __webpack_require__(45)("3860e7c0", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -14951,7 +14479,7 @@ if(false) {
 }
 
 /***/ }),
-/* 67 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -14970,7 +14498,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(68)
+var listToStyles = __webpack_require__(46)
 
 /*
 type StyleObject = {
@@ -15172,7 +14700,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 68 */
+/* 46 */
 /***/ (function(module, exports) {
 
 /**
@@ -15202,6 +14730,136 @@ module.exports = function listToStyles (parentId, list) {
   }
   return styles
 }
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_dist_vue__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_dist_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__node_modules_vue_dist_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__app_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_styles_css__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_styles_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__styles_styles_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_styles_scss__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__styles_styles_scss__);
+
+
+
+
+
+
+new __WEBPACK_IMPORTED_MODULE_0__node_modules_vue_dist_vue___default.a({
+    el: '.todo',
+    components: { App: __WEBPACK_IMPORTED_MODULE_1__app_vue___default.a }
+})
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_path__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_querystring__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_querystring___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_querystring__);
+/**
+ * @fileOverview Various Todo services for the Todo API.
+ * @author Serge R. Kamel
+ * @version 0.0.1
+ */
+
+
+
+
+
+/**
+ * Setting the default Parameters for Axios
+ */
+__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.baseURL = 'http://localhost:3000';
+__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.timeout = 10000;
+__WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.post['Content-Type'], __WEBPACK_IMPORTED_MODULE_0_axios___default.a.defaults.headers.put['Content-Type'] = "application/x-www-form-urlencoded";
+
+class RestServices {
+    /**
+     * Fetch all Todos or a specific Todo by passing a Todo ID.
+     * @param {string} user - the user currently logged in.
+     * @param {string} [todoid] - a unique identifier for todos.
+     */
+    requestTodo (user, todoid) {
+        if(!todoid && user) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1_path___default.a.join('api/todo', user.toString())) // fetch all Todos.
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+        else if(todoid && user) {
+            return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1_path___default.a.join('api/todo', user.toString(), '/', todoid.toString())) // get a specific todo.
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+        return
+    }
+    /**
+     * Saves a todo item in the database as a document.
+     * @param {string} user - the user currently logged in.
+     * @param {object} todo - a JSON valid todo object based on the todo model defined in the API
+     */
+    saveTodo (user, todo) {
+        if(!todo || !user) {
+            return
+        }
+        var data = __WEBPACK_IMPORTED_MODULE_2_querystring___default.a.stringify(todo);
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(__WEBPACK_IMPORTED_MODULE_1_path___default.a.join('api/todo', user.toString()), data)
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+    /**
+     * Updates a todo item in the database as a document.
+     * @param {string} user - the user currently logged in.
+     * @param {object} todo - a JSON valid todo object based on the todo model defined in the API
+     */
+    updateTodo (user, todo) {
+        if(!todo) {
+            return
+        }
+        var data = __WEBPACK_IMPORTED_MODULE_2_querystring___default.a.stringify(todo);
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(__WEBPACK_IMPORTED_MODULE_1_path___default.a.join('api/todo', user.toString(), '/', todo._id.toString()), data)
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+    /**
+     * Deletes a todo item from the database document based on the provided ID.
+     * @param {string} user - the user currently logged in.
+     * @param {string} todoid - the identifier of the todo item to be deleted from the document.
+     */
+    deleteTodo (user, todoid) {
+        if(!todoid) {
+            return
+        }
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete(__WEBPACK_IMPORTED_MODULE_1_path___default.a.join('api/todo', user.toString(), '/', todoid.toString()))
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+
+    getCurrentUser () {
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('user')
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["default"] = RestServices;
 
 
 /***/ })

@@ -4,7 +4,7 @@
   "description": "a todo-challenge built using latest web technologies",
   "main": "src/app.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server/bundle.main.js",
     "test": "mocha"
   },
   "repository": {
