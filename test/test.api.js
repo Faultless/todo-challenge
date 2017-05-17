@@ -22,6 +22,13 @@ describe("Get all todos", function() {
     });
 });
 
+describe("Get a todo", function() {
+    it("should return a todo", function(done) {
+        var TodoMock = sinon.mock(Todo);
+        var expectedResult = { status: true, todo: {} };
+    });
+});
+
 describe("Save a todo", function() {
     it("should save a todo", function(done) {
         var TodoMock = sinon.mock(
@@ -31,6 +38,21 @@ describe("Save a todo", function() {
         var expectedResult = { status: true };
         TodoMock.expects('save').yields(null, expectedResult);
         todo.save(function (err, result) {
+            TodoMock.verify();
+            TodoMock.restore();
+            expect(result.status).to.be.true;
+            done();
+        });
+    });
+});
+
+describe("delete a todo", function() {
+    it("should delete a todo", function(done) {
+        var TodoMock = sinon.mock(Todo);
+        var todo = TodoMock.object;
+        var expectedResult = { status: true };
+        TodoMock.expects('remove').yields(null, expectedResult);
+        todo.remove(function (err, result) {
             TodoMock.verify();
             TodoMock.restore();
             expect(result.status).to.be.true;
