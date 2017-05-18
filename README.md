@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Faultless/todo-challenge.svg?branch=master)](https://travis-ci.org/Faultless/todo-challenge)
+
 # Todo Challenge
 
 A simple Todo application built mainly with [Vue](https://vuejs.org) for the frontend, [mongoose](http://mongoosejs.com/) for the Database, and Node's [Express](https://expressjs.com/) framework for the server-side code and API. 
