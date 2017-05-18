@@ -16,7 +16,6 @@ to get a copy of the repository locally.
 Then simply **execute the following commands** at the **root** of the application:
 
 ```
-npm install
 npm start
 ```
 > Note that the first command will take a while to execute especially on slow connections since the project has a lot of dependencies.
@@ -38,6 +37,7 @@ This project uses [webpack](https://webpack.js.org/guides/installation/) in orde
 To make use of this bundler, first we need to **install webpack globally**
 
 ```
+npm install
 npm install webpack -g
 ```
 
@@ -55,13 +55,13 @@ Checkout the [Docs](docs) for a quick overview of the important methods in use a
 
 ## Improvements and Fixes Checklist
 
-- [x] Generate Documentation using [JSDocs](http://usejsdoc.org/).
+- [X] Generate Documentation using [JSDocs](http://usejsdoc.org/).
 - [X] Add Authentication mechanism.
-- [ ] Testing Modules for the API.
+- [X] Testing Modules for the API. (partial)
 - [ ] Full Editing of Todos.
 - [ ] Responsive Design.
 - [ ] Code Clean-up.
-- [ ] Separate Prod and Dev bundling (webpack).
+- [X] Separate Prod and Dev bundling (webpack).
 
 ## Author
 
