@@ -22,12 +22,12 @@ describe("Get all todos", function() {
     });
 });
 
-describe("Get a todo", function() {
-    it("should return a todo", function(done) {
-        var TodoMock = sinon.mock(Todo);
-        var expectedResult = { status: true, todo: {} };
-    });
-});
+// describe("Get a todo", function() {
+//     it("should return a todo", function(done) {
+//         var TodoMock = sinon.mock(Todo);
+//         var expectedResult = { status: true, todo: {} };
+//     });
+// });
 
 describe("Save a todo", function() {
     it("should save a todo", function(done) {
