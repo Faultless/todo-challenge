@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Faultless/todo-challenge.svg?branch=testing-and-cleaning)](https://travis-ci.org/Faultless/todo-challenge)
+[![Build Status](https://travis-ci.org/Faultless/todo-challenge.svg?branch=master)](https://travis-ci.org/Faultless/todo-challenge)
 
 # Todo Challenge
 
